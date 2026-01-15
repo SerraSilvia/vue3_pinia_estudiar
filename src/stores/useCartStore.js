@@ -5,5 +5,12 @@ import {defineStore} from 'pinia'
 // Mai res fora del defineStore
 export const useCartStore = defineStore('CartStore', () => {  
     const items = ref([]);
-    return {items} 
+    
+    function addToCart(contador, item) {
+        contador = parseInt(contador);
+        for (let i = 0; i < contador; i++) {
+        items.value.push(item); 
+  }
+}
+    return {items, addToCart} 
 });
