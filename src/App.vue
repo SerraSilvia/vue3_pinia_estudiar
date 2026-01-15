@@ -8,8 +8,15 @@ import { useCartStore } from "@/stores/useCartStore";
 
 const ProductStore = useProductStore()
 ProductStore.fill();
+
 const CartStore = useCartStore()
-//console.log(ProductStore)
+
+function addToCart(contador, item) {
+  for (let i = 0; i < contador; i++) {
+    CartStore.items.value.push(item); // Recordar que és reactiu i es posa .value
+  }
+}
+
 const {productRef} = storeToRefs(useProductStore())
 
 </script>
@@ -22,7 +29,7 @@ const {productRef} = storeToRefs(useProductStore())
         v-for="product in productRef"
         :key="product.name"
         :product="product"
-        @addToCart=""
+        @addToCart="addToCart($event, product)"
       />
     </ul>
   </div>
