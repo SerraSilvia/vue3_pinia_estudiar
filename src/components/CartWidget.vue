@@ -2,6 +2,7 @@
 // imports
 import { ref } from "vue";
 import CartItem from "./CartItem.vue";
+import { useCartStore } from "@/stores/useCartStore.js";
 
 // data
 const active = ref(false);
@@ -17,7 +18,8 @@ const active = ref(false);
     <AppModalOverlay :active="active" @close="active = false">
       <div>
         <ul class="items-in-cart">
-          <CartItem
+          <CartItem v-for = "item in useCartStore.items"
+            :key="name"
             :product="{ name: 'Dried Pineapple', price: 5 }"
             :count="5"
             @updateCount=""

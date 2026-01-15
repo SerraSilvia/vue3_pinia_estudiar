@@ -4,10 +4,13 @@ import ProductCard from "@/components/ProductCard.vue";
 //import products from "@/data/products.json";
 import { useProductStore} from '@/stores/useProductStore.js'
 import { storeToRefs } from "pinia";
+import { useCartStore } from "@/stores/useCartStore";
 
-//const ProductStore = useProductStore()
+const ProductStore = useProductStore()
+ProductStore.fill();
+const CartStore = useCartStore()
 //console.log(ProductStore)
-const {products} = storeToRefs(useProductStore())
+const {productRef} = storeToRefs(useProductStore())
 
 </script>
 <!-- Vue3 nova manera de fer-->
@@ -16,9 +19,10 @@ const {products} = storeToRefs(useProductStore())
     <TheHeader />
     <ul class="sm:flex flex-wrap lg:flex-nowrap gap-5">
       <ProductCard
-        v-for="product in products"
+        v-for="product in productRef"
         :key="product.name"
         :product="product"
+        @addToCart=""
       />
     </ul>
   </div>
