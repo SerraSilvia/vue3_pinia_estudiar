@@ -10,7 +10,7 @@ const ProductStore = useProductStore()
 ProductStore.fill();
 
 const CartStore = useCartStore()
-
+//quan el programa és molt gran i necessito desestructurar, necessito store to refs                    
 const {productRef} = storeToRefs(useProductStore())
 
 </script>
